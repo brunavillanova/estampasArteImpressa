@@ -1,70 +1,142 @@
-# Getting Started with Create React App
+Documentação do Projeto de Camisetas Personalizadas
+Visão Geral
+Este projeto consiste em um sistema de e-commerce para camisetas personalizadas. Ele inclui uma aplicação frontend desenvolvida com React e um backend em Node.js com Express que gerencia uploads de imagens e fornece APIs para o frontend.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Estrutura do Projeto
+Frontend: Aplicação React para exibir produtos, detalhes dos produtos e gerenciar uploads de arquivos.
+Backend: Servidor Node.js com Express para gerenciar uploads e fornecer APIs para o frontend.
+Frontend
+Tecnologias Utilizadas
+React: Biblioteca JavaScript para construir interfaces de usuário.
+React Router: Biblioteca para gerenciar a navegação entre páginas.
+React Icons: Biblioteca para ícones de redes sociais.
+CSS: Para estilização dos componentes.
+Estrutura de Componentes
+Footer: Componente de rodapé com informações de contato e links sociais.
+Help: Página com perguntas frequentes e informações de contato.
+MainContent: Componente principal da página inicial com imagens em círculo.
+ProductDetails: Página que exibe detalhes de um produto específico.
+ProductGrid: Componente que exibe uma grade de produtos.
+ProductList: Componente que exibe uma lista de produtos.
+TrocasDevolucoes: Página com política de trocas e devoluções.
+Configuração
+Instalação das Dependências
 
-## Available Scripts
+Navegue até o diretório do frontend e instale as dependências:
 
-In the project directory, you can run:
+bash
+Copiar código
+cd frontend
+npm install
+Executar o Servidor de Desenvolvimento
 
-### `npm start`
+Inicie o servidor de desenvolvimento do React:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+bash
+Copiar código
+npm start
+A aplicação estará disponível em http://localhost:3000.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Backend
+Tecnologias Utilizadas
+Node.js: Ambiente de execução para JavaScript no servidor.
+Express: Framework para criar o servidor HTTP.
+Multer: Middleware para manipulação de uploads de arquivos.
+CORS: Middleware para permitir requisições de origens diferentes.
+Path: Módulo Node.js para manipulação de caminhos de arquivos.
+Estrutura de Endpoints
+POST /upload
 
-### `npm test`
+Descrição: Faz o upload de um arquivo de imagem.
+Headers:
+Content-Type: multipart/form-data
+Body:
+image: Arquivo de imagem a ser carregado.
+Response:
+json
+Copiar código
+{
+  "file": "uploads/filename.ext"
+}
+Servir Arquivos Estáticos
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Descrição: Arquivos na pasta uploads/ podem ser acessados diretamente via URLs.
+URL: http://localhost:5000/uploads/filename.ext
+Configuração
+Instalação das Dependências
 
-### `npm run build`
+Navegue até o diretório do backend e instale as dependências:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+bash
+Copiar código
+cd backend
+npm install
+Configuração de Variáveis de Ambiente
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Crie um arquivo .env na raiz do diretório do backend com o seguinte conteúdo:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+makefile
+Copiar código
+PORT=5000
+UPLOAD_PATH=uploads
+Executar o Servidor
 
-### `npm run eject`
+Inicie o servidor Node.js:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+bash
+Copiar código
+npm start
+O servidor estará disponível em http://localhost:5000.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Código
+Servidor Express
+javascript
+Copiar código
+const express = require('express');
+const cors = require('cors');
+const multer = require('multer');
+const path = require('path');
+require('dotenv').config();
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const app = express();
+const port = process.env.PORT || 5000;
+const uploadPath = process.env.UPLOAD_PATH || 'uploads';
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadPath);
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname)); // Appending extension
+  }
+});
 
-## Learn More
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 } // Limite de 5MB
+});
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+app.use(cors({
+  origin: 'http://localhost:3001' // Permitir somente a origem do seu frontend
+}));
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+app.post('/upload', upload.single('image'), (req, res) => {
+  res.json({ file: `${uploadPath}/${req.file.filename}` });
+});
 
-### Code Splitting
+app.use('/uploads', express.static(path.join(__dirname, uploadPath)));
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+Testes
+Frontend
+Verifique se todos os componentes estão funcionando como esperado.
+Teste a navegação entre páginas e o comportamento dos formulários.
+Backend
+Utilize ferramentas como Postman para testar o upload de arquivos e verificar se os arquivos são salvos corretamente.
+Considerações Finais
+Segurança: Certifique-se de validar e sanitizar os arquivos carregados para evitar problemas de segurança.
+Escalabilidade: Considere o uso de soluções como armazenamento em nuvem para lidar com um grande volume de uploads.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
