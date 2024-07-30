@@ -1,6 +1,6 @@
 .design-editor {
   text-align: center;
-  padding-bottom: 700px; /* Adiciona espaço extra no final da seção */
+  padding-bottom: 820px; /* Adiciona espaço extra no final da seção */
 }
 
 .canvas-container {
@@ -10,7 +10,7 @@
 
 .tshirt-container {
   position: relative;
-  width: 1000px;
+  width: 600px;
   margin: auto;
 }
 
@@ -43,23 +43,6 @@ select {
   position: absolute;
 }
 
-.delete-button {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  line-height: 12px;
-}
 
 
 
