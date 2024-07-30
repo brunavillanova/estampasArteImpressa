@@ -33,6 +33,14 @@ const products = [
     image: '/img/longlinefeminina.png',
     sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
     whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta Longline de Algodão Premium Feminina.'
+  },
+  {
+    id:5,
+    name: 'Camiseta Longline de Algodão Masculina',
+    description: 'Malha 100% Algodão',
+    image: '/img/longlinemasculinapreta.jpg',
+    sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
+    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta Longline de Algodão Masculina.'
   }
 ];
 
