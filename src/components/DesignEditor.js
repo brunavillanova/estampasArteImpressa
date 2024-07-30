@@ -13,7 +13,7 @@ const DesignEditor = () => {
 
     for (let img of images) {
       const formData = new FormData();
-      formData.append('image', dataURLtoFile(img.src, 'image.png'));
+      formData.append('file', dataURLtoFile(img.src, 'image.png'));
 
       try {
         const response = await axios.post('http://localhost:5000/upload', formData, {
@@ -21,7 +21,7 @@ const DesignEditor = () => {
             'Content-Type': 'multipart/form-data',
           },
         });
-        imageUrls.push(`http://localhost:5000/${response.data.file}`);
+        imageUrls.push(response.data.url);
       } catch (error) {
         console.error('Error uploading image:', error);
       }
@@ -131,7 +131,7 @@ const DesignEditor = () => {
             >
               <div style={{ position: 'relative' }}>
                 <textarea
-                  style={{ fontFamily: t.font, fontSize: '16px', width: '100%', height: '100%', backgroundColor: 'transparent', border: 'none', resize: 'none' }}
+                  style={{ fontFamily: t.font, fontSize: '16px', width: '100%', height: '100%' }}
                   value={t.content}
                   onChange={(e) => updateTextContent(t.id, e.target.value)}
                 />
