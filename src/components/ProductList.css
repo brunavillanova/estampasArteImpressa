@@ -17,6 +17,7 @@
   box-shadow: 0 0 10px rgba(252, 249, 249, 0.1);
   max-width: 200px;
   text-align: center;
+  color: #000; /* Adicionado para garantir que o texto dentro do cartão seja preto */
 }
 
 .product-image {
@@ -36,4 +37,10 @@
 
 .details-button:hover {
   background-color: #45a049;
+}
+
+/* Adiciona cor branca ao texto dentro do cartão de produto */
+.product-card h2,
+.product-card p {
+  color: #fff;
 }
