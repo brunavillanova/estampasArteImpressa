@@ -1,0 +1,54 @@
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-card {
+  background: #000; /* Mudar a cor de fundo para preto */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  width: 250px;
+  padding: 20px;
+  margin: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Adicionar transição para transformação e cor de fundo */
+}
+
+.product-card:hover {
+  background-color: #333; /* Cor de fundo ao passar o mouse */
+  transform: translateY(-10px); /* Mover o cartão para cima ao passar o mouse */
+}
+
+.product-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #070606; /* Mudar a cor do texto para branco */
+}
+
+.product-card p {
+  font-size: 1em;
+  color: #000000; /* Mudar a cor do texto para cinza claro */
+  margin-bottom: 20px;
+}
+
+.product-card .quote-button {
+  display: block;
+  background-color: #2e1675;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 10px auto;
+}
+
+.product-card .quote-button:hover {
+  background-color: #3b3b3b;
+  color: #fff;
+}

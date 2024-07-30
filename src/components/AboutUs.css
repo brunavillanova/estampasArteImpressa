@@ -1,0 +1,29 @@
+.about-us {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.about-us h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.about-us p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.about-us-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 50%; /* Faz a imagem ficar redonda */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra à imagem */
+  width: 300px; /* Ajusta o tamanho da imagem */
+  height: 300px; /* Ajusta o tamanho da imagem */
+  object-fit: cover; /* Garante que a imagem se ajuste bem dentro do contêiner redondo */
+}

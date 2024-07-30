@@ -1,0 +1,38 @@
+/* Adicione esta linha no início do seu arquivo CSS para importar a fonte */
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+.header {
+  background-color: #000000;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: 'Rock Salt', cursive; /* Aplica a fonte personalizada */
+}
+
+.logo a {
+  color: yellow; /* Cor do texto "Arte Impressa" */
+  text-decoration: none; /* Remover sublinhado */
+}
+
+.logo a:hover {
+  color: orange; /* Cor ao passar o mouse */
+}
+
+.nav {
+  margin-top: 10px;
+}
+
+.nav a {
+  margin: 0 15px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,31 @@
+.product-details {
+  padding: 20px;
+  text-align: center;
+}
+
+.product-details-image {
+  max-width: 500px; /* Define o tamanho máximo para a imagem */
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.customize-button, .quote-button {
+  background-color: #231057;
+  color: #fdfcfc;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 10px;
+  text-decoration: none;
+  display: inline-block;
+  width: auto;
+  max-width: 200px; /* Define o tamanho máximo para o botão */
+}
+
+.customize-button:hover, .quote-button:hover {
+  background-color: #000;
+  color: #fff;
+}

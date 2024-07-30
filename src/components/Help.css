@@ -1,0 +1,35 @@
+.help {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .help h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .help h2 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
+  
+  .help p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #000000;
+  }
+  
+  .help ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+  }
+  
+  .help li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+  
