@@ -4,58 +4,38 @@ import './ProductDetails.css';
 
 const productData = {
   1: {
-    name: 'Camiseta Longline de Algodão Premium Feminina',
-    description: 'Malha Premium 100% Algodão Penteada 30/1 BCI com proteção UV50+',
-    image: '/img/longlinefeminina.png',
+    
+    name: 'Top Feminino',
+    description: 'Malha 100% Algodão',
+    image: '/img/top´branco.webp',
     sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
-    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta Longline de Algodão Premium Feminina.'
+    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Top Feminina.'
   },
   2: {
-    name: 'Camiseta longline de Algodão Basic',
-    description: 'Malha 100% Algodão Penteada',
+   
+    name: 'Camiseta de Algodão Basic',
+    description: 'Malha 100% Algodão ',
     image: '/img/longlinepretafeminina.webp',
-    sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
-    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta longline de Algodão Basic.'
+    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta de Algodão Basic.',
+    sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3']
   },
   3: {
-    name: 'Camiseta longline masculina ',
+    
+    name: 'Camiseta longline masculina',
     description: 'Malha 100% Poliéster',
     image: '/img/longlinemasculinabranca.jpg',
     sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
     whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta longline masculina.'
   },
   4: {
-    name: 'Camiseta Longline masculina',
-    description: 'Malha 100% Algodão Penteada',
-    image: '/img/longlinemasculinapreta.jpg',
-    sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
-    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta Longline masculina.'
-  },
-  5:{
-    name: 'Top Feminino',
+    
+    name: 'Camiseta Longline de Algodão Premium Feminina',
     description: 'Malha 100% Algodão',
-    image: '/img/top´branco.webp',
+    image: '/img/longlinefeminina.png',
     sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
-    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Top Feminina.'
-
+    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta Longline de Algodão Premium Feminina.'
   },
-  6:{
-    id: 6,
-    name: 'Camiseta de Algodão Basic Feminina',
-    description: 'Malha 100% Algodão Penteada',
-    image: '/img/camiseta preta.png',
-    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta de Algodão Basic Feminina.',
-    sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3']
-
-  },
-  7:{
-    id: 7,
-    name: 'Camiseta de Poliéster',
-    description: 'Malha 100% Poliéster',
-    image: '/img/camiseta branca.png',
-    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta de Poliéster.',
-    sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3']
-  }
+ 
 
 
 };
