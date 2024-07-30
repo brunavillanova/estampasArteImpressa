@@ -15,8 +15,8 @@ const products = [
   {
     id: 2,
     name: 'Camiseta de Algodão Basic',
-    description: 'Malha 100% Algodão Penteada',
-    image: '/img/camiseta preta.png',
+    description: 'Malha 100% Algodão ',
+    image: '/img/longlinepretafeminina.webp',
     whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta de Algodão Basic.',
     sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3']
   },
@@ -30,7 +30,7 @@ const products = [
   {
     id:4,
     name: 'Camiseta Longline de Algodão Premium Feminina',
-    description: 'Malha Premium 100% Algodão Penteada 30/1 BCI com proteção UV50+',
+    description: 'Malha 100% Algodão',
     image: '/img/longlinefeminina.png',
     sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
     whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta Longline de Algodão Premium Feminina.'
