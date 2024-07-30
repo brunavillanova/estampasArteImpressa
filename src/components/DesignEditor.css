@@ -1,5 +1,6 @@
 .design-editor {
   text-align: center;
+  padding-bottom: 200px; /* Adiciona espaço extra no final da seção */
 }
 
 .canvas-container {
