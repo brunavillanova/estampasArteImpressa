@@ -8,6 +8,16 @@ const DesignEditor = () => {
   const [text, setText] = useState([]);
   const [font, setFont] = useState('Arial');
 
+  // Definição do produto selecionado
+  const selectedProduct = {
+    id: 1,
+    name: 'Top Feminino',
+    description: 'Malha 100% Algodão',
+    image: '/img/top-branco.webp',
+    sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
+    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para o Top Feminino.'
+  };
+
   const handleSendToWhatsApp = async () => {
     let imageUrls = [];
 
@@ -27,7 +37,7 @@ const DesignEditor = () => {
       }
     }
 
-    const whatsappMessage = 'Olá, gostaria de personalizar uma camiseta com esta estampa: ';
+    const whatsappMessage = selectedProduct.whatsappMessage;
     const imageUrl = imageUrls.map((url) => `Imagem: ${url}`).join('\n');
     const textUrl = text.map((t) => `Texto: ${t.content} - Fonte: ${t.font}`).join('\n');
     const whatsappURL = `https://api.whatsapp.com/send?phone=11971552389&text=${encodeURIComponent(
@@ -73,11 +83,12 @@ const DesignEditor = () => {
   return (
     <div className="design-editor">
       <h1>Personalize Sua Estampa</h1>
+
       <div className="canvas-container">
         <div className="tshirt-container">
           <img
-            src={`${process.env.PUBLIC_URL}/img/tshirt-template.jpg`}
-            alt="T-shirt Template"
+            src={selectedProduct.image} // Caminho da imagem correto
+            alt={selectedProduct.name}
             className="tshirt-template"
           />
           {images.map((img) => (
@@ -141,6 +152,7 @@ const DesignEditor = () => {
           ))}
         </div>
       </div>
+
       <input type="file" accept="image/*" onChange={handleImageUpload} />
       <div>
         <select onChange={(e) => setFont(e.target.value)} value={font}>
