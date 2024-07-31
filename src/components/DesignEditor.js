@@ -1,22 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Rnd } from 'react-rnd';
 import axios from 'axios';
 import './DesignEditor.css';
 
 const DesignEditor = () => {
+  // Lista de produtos disponíveis
+  const products = [
+    {
+      id: 1,
+      name: 'Top Feminino',
+      description: 'Malha 100% Algodão',
+      image: '/img/top-branco.webp',
+      sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
+      whatsappMessage: 'Olá, gostaria de solicitar um orçamento para o Top Feminino.'
+    },
+    {
+      id: 2,
+      name: 'Camiseta de Algodão Basic',
+      description: 'Malha 100% Algodão',
+      image: '/img/longlinepretafeminina.webp',
+      sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
+      whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta de Algodão Basic.'
+    },
+    {
+      id: 3,
+      name: 'Camiseta longline masculina',
+      description: 'Malha 100% Poliéster',
+      image: '/img/longlinemasculinabranca.jpg',
+      sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
+    },
+    {
+      id: 4,
+      name: 'Camiseta Longline de Algodão Premium Feminina',
+      description: 'Malha 100% Algodão',
+      image: '/img/longlinefeminina.png',
+      sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
+      whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta Longline de Algodão Premium Feminina.'
+    },
+    {
+      id: 5,
+      name: 'Camiseta Longline de Algodão Masculina',
+      description: 'Malha 100% Algodão',
+      image: '/img/longlinemasculinapreta.jpg',
+      sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
+      whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Camiseta Longline de Algodão Masculina.'
+    }
+  ];
+
+  const [selectedProduct, setSelectedProduct] = useState(products[0]); // Produto selecionado inicialmente
   const [images, setImages] = useState([]);
   const [text, setText] = useState([]);
   const [font, setFont] = useState('Arial');
 
-  // Definição do produto selecionado
-  const selectedProduct = {
-    id: 1,
-    name: 'Top Feminino',
-    description: 'Malha 100% Algodão',
-    image: '/img/top-branco.webp',
-    sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
-    whatsappMessage: 'Olá, gostaria de solicitar um orçamento para o Top Feminino.'
-  };
+  useEffect(() => {
+    console.log('Produto selecionado:', selectedProduct);
+  }, [selectedProduct]);
 
   const handleSendToWhatsApp = async () => {
     let imageUrls = [];
@@ -34,10 +72,11 @@ const DesignEditor = () => {
         imageUrls.push(response.data.url);
       } catch (error) {
         console.error('Error uploading image:', error);
+        alert('Erro ao enviar imagem. Tente novamente.');
       }
     }
 
-    const whatsappMessage = selectedProduct.whatsappMessage;
+    const whatsappMessage = selectedProduct.whatsappMessage || 'Olá, gostaria de solicitar um orçamento.';
     const imageUrl = imageUrls.map((url) => `Imagem: ${url}`).join('\n');
     const textUrl = text.map((t) => `Texto: ${t.content} - Fonte: ${t.font}`).join('\n');
     const whatsappURL = `https://api.whatsapp.com/send?phone=11971552389&text=${encodeURIComponent(
@@ -57,6 +96,8 @@ const DesignEditor = () => {
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
+    if (!file) return;
+
     const reader = new FileReader();
     reader.onload = () => {
       setImages([...images, { id: Date.now(), src: reader.result, x: 50, y: 50, width: 200, height: 200 }]);
@@ -80,16 +121,49 @@ const DesignEditor = () => {
     setImages(images.filter((img) => img.id !== id));
   };
 
+  const handleProductChange = (event) => {
+    const productId = parseInt(event.target.value);
+    console.log('ID do produto selecionado:', productId); // Log para verificar o ID
+
+    const selected = products.find(product => product.id === productId);
+    
+    if (selected) {
+      console.log('Produto selecionado:', selected); // Log para verificar o produto selecionado
+      setSelectedProduct(selected);
+      setImages([]); // Limpar imagens
+      setText([]);   // Limpar textos
+    } else {
+      console.error('Produto não encontrado para o ID:', productId);
+    }
+  };
+
   return (
     <div className="design-editor">
       <h1>Personalize Sua Estampa</h1>
 
+      <div className="product-selector">
+        <select
+          onChange={handleProductChange}
+          value={selectedProduct.id}
+        >
+          {products.map(product => (
+            <option key={product.id} value={product.id}>
+              {product.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="canvas-container">
         <div className="tshirt-container">
           <img
-            src={selectedProduct.image} // Caminho da imagem correto
+            src={selectedProduct.image}
             alt={selectedProduct.name}
             className="tshirt-template"
+            onError={(e) => {
+              console.error('Erro ao carregar imagem:', e);
+              e.target.src = '/img/default-image.png'; // Imagem padrão em caso de erro
+            }}
           />
           {images.map((img) => (
             <Rnd
