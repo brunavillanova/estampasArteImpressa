@@ -10,6 +10,43 @@
   margin-bottom: 20px;
 }
 
+.color-selector {
+  display: flex;
+  justify-content: center; /* Centraliza as opções de cor */
+  align-items: center;
+  gap: 10px; /* Espaçamento entre as cores */
+  margin: 20px 0;
+}
+
+.color-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.color-option:hover {
+  transform: scale(1.2);
+  border-color: #000;
+}
+
+.color-option.selected {
+  border-color: #000;
+}
+
+.tick {
+  color: rgb(133, 145, 170);
+  font-weight: bold;
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 18px;
+  pointer-events: none;
+}
+
 .customize-button, .quote-button {
   background-color: #231057;
   color: #fdfcfc;
