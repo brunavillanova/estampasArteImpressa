@@ -7,7 +7,7 @@ const products = [
     id:1,
     name: 'Top Feminino',
     description: 'Malha 100% Algodão',
-    image: '/img/top´branco.webp',
+    image: '/img/top-branco.webp',
     sizes: ['P', 'M', 'G', 'GG', 'X1', 'X2', 'X3'],
     whatsappMessage: 'Olá, gostaria de solicitar um orçamento para a Top Feminina.'
   },
